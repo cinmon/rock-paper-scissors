@@ -44,70 +44,46 @@ function playRound(humanChoice) {
     let draw = false;
 
     switch(humanChoice) {
-        // Human drew rock
         case 1:
             humanAction = "You chose rock. "
-            if(computerChoice == 2) {
-                // Rock vs. Paper
+            if (computerChoice == 2) {
                 humanWin = false;
-            }
-            else if(computerChoice == 3) {
-                // Rock vs. Scissors
+            } else if (computerChoice == 3) {
                 humanWin = true;
-            }
-            else if(computerChoice == 1) {
-                // Rock vs. Rock
+            } else if (computerChoice == 1) {
                 draw = true;
             }
             break;
         case 2:
             humanAction = "You chose paper. "
-            // Human drew paper
-            if(computerChoice == 1) {
-                // Paper vs. Rock
+            if (computerChoice == 1) {
                 humanWin = true;
-            }
-            // Paper vs. Scissors
-            else if(computerChoice == 3) {
+            } else if (computerChoice == 3) {
                 humanWin = false;
-            }
-            // Paper vs. Paper
-            else if(computerChoice == 2) {
+            } else if (computerChoice == 2) {
                 draw = true;
             }
             break;
         case 3:
             humanAction = "You chose scissors. "
-            // Human drew scissors
-            if(computerChoice == 1) {
-                // Scissors vs. Rock
+            if (computerChoice == 1) {
                 humanWin = false;
-            }
-            else if(computerChoice == 2) {
-                // Scissors vs. Paper
+            } else if (computerChoice == 2) {
                 humanWin = true;
-            }
-            else if(computerChoice == 3) {
-                // Scissors vs. Scissors
+            } else if (computerChoice == 3) {
                 draw = true;
             }
             break;
     }
 
-    const computer_action_text = document.createElement("div");
     document.querySelector(".computer-action").textContent = humanAction + "Computer chose " + (computerChoice == 1 ? "rock" : (computerChoice == 2 ? "paper" : "scissors"));
 
-    const result_text = document.createElement("div");
-    if(humanWin == true) {
+    if (humanWin === true) {
         humanScore++;
         document.querySelector(".result").textContent = "You got one point! :)";
-    }
-    else if (draw){
-        humanScore++;
-        computerScore++;
+    } else if (draw) {
         document.querySelector(".result").textContent = "It's a draw!";
-    }
-    else {   
+    } else {
         computerScore++;
         document.querySelector(".result").textContent = "Computer got one point :(";
     }
@@ -115,8 +91,33 @@ function playRound(humanChoice) {
     document.querySelector(".computer-score").textContent = "Computer = " + computerScore;
     document.querySelector(".human-score").textContent = "Human = " + humanScore;
 
+    if (humanScore === 5 || computerScore === 5) {
+        let winner = humanScore === 5 ? "You win!" : "Computer wins!";
+        alert(winner + " Restarting game");
+        resetGame();
+    }
+}
 
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    document.querySelector(".computer-action").textContent = "";
+    document.querySelector(".result").textContent = "";
+    document.querySelector(".computer-score").textContent = "Computer = 0";
+    document.querySelector(".human-score").textContent = "Human = 0";
+    enableGame(); 
+}
 
+function disableGame() {
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissor").disabled = true;
+}
+
+function enableGame() {
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissor").disabled = false;
 }
 
 getHumanChoice();
