@@ -46,6 +46,7 @@ function playRound(humanChoice) {
     switch(humanChoice) {
         // Human drew rock
         case 1:
+            humanAction = "You chose rock. "
             if(computerChoice == 2) {
                 // Rock vs. Paper
                 humanWin = false;
@@ -60,6 +61,7 @@ function playRound(humanChoice) {
             }
             break;
         case 2:
+            humanAction = "You chose paper. "
             // Human drew paper
             if(computerChoice == 1) {
                 // Paper vs. Rock
@@ -75,6 +77,7 @@ function playRound(humanChoice) {
             }
             break;
         case 3:
+            humanAction = "You chose scissors. "
             // Human drew scissors
             if(computerChoice == 1) {
                 // Scissors vs. Rock
@@ -92,12 +95,12 @@ function playRound(humanChoice) {
     }
 
     const computer_action_text = document.createElement("div");
-    document.querySelector(".computer-action").textContent = "Computer chose " + (computerChoice == 1 ? "rock" : (computerChoice == 2 ? "paper" : "scissors"));
+    document.querySelector(".computer-action").textContent = humanAction + "Computer chose " + (computerChoice == 1 ? "rock" : (computerChoice == 2 ? "paper" : "scissors"));
 
     const result_text = document.createElement("div");
     if(humanWin == true) {
         humanScore++;
-        document.querySelector(".result").textContent = "You win! :)";
+        document.querySelector(".result").textContent = "You got one point! :)";
     }
     else if (draw){
         humanScore++;
@@ -106,11 +109,13 @@ function playRound(humanChoice) {
     }
     else {   
         computerScore++;
-        document.querySelector(".result").textContent = "You lose! :(";
+        document.querySelector(".result").textContent = "Computer got one point :(";
     }
 
     document.querySelector(".computer-score").textContent = "Computer = " + computerScore;
     document.querySelector(".human-score").textContent = "Human = " + humanScore;
+
+
 
 }
 
