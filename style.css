@@ -1,8 +1,10 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     margin: 0px;
+    height: 100vh;
+    background-color: #f8f0c7;
 }
 
 .header {
@@ -33,18 +35,18 @@ body {
 button { 
     padding: 24px 40px;
     font-size: 24px;
-    background: #F5DD61;
+    background: #59D5E0;
     box-shadow: 0px 10px 10px rgb(163, 161, 161);
     border: none;
     border-radius: 20px;
 }
 
 button:hover {
-    background: #dcc65d;
+    background: #49adb6;
 }
 
 button:active {
-    background: #dcc65d;
+    background: #49adb6;
     box-shadow: 0px 10px 10px rgb(111, 109, 109);
     transform: translateY(4px);
 }
@@ -60,9 +62,19 @@ button:active {
 }
 
 .scores {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     gap: 32px;
+    margin: 32px;
     align-items: flex-end;
+}
+
+.footer {
     font-family: "Inter", Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 32px;
+    background-color: #FAA300;
 }
